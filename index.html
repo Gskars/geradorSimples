@@ -1,0 +1,120 @@
+<html>
+<head>
+  <style>
+    body {
+      background-color: #000000;
+      color: #00FF00;
+      font-family: Arial, sans-serif;
+      /* Usa flexbox para alinhar os elementos */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    button {
+      display: block;
+      margin: 0 auto;
+      /* Diminui a margem superior do botão */
+      margin-top: 50px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background-color: #00FF00;
+      color: #000000;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    p {
+      text-align: center;
+      font-size: 30px;
+    }
+
+    /* Adiciona um estilo para o container */
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      /* Adiciona uma margem superior ao container */
+      margin-top: 50px;
+      border: 5px solid #00FF00;
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    /* Adiciona uma regra de media query para telas menores que 600px */
+    @media (max-width: 600px) {
+      /* Reduz o tamanho da fonte do título */
+      h1 {
+        font-size: 24px;
+      }
+
+      /* Reduz o tamanho da fonte do botão */
+      button {
+        font-size: 16px;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+
+      /* Reduz o tamanho da fonte do elemento p */
+      p {
+        font-size: 20px;
+      }
+
+      /* Reduz a largura e a borda do container */
+      .container {
+        width: 90%;
+        border-width: 3px;
+        border-radius: 10px;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Gerador de Filmes</h1>
+  <button id="gerar">Gerar</button>
+  <!-- Coloca o elemento p dentro do container -->
+  <div class="container">
+    <p id="resultado"></p>
+  </div>
+  <script>
+    // Lista de gêneros de filmes
+    var generos = ["Ação", "Animação", "Aventura", "Comédia", "Drama", "Fantasia", "Ficção Científica", "Musical", "Romance", "Suspense", "Terror"];
+
+    // Lista de streamers
+    var streamers = ["HBO", "Star +", "Prime video"];
+
+    // Função para gerar um número aleatório entre min e max (inclusive)
+    function aleatorio(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    // Função para gerar um filme
+    function gerarFilme() {
+      // Escolhe um gênero aleatório da lista
+      var genero = generos[aleatorio(0, generos.length - 1)];
+
+      // Escolhe um streamer aleatório da lista
+      var streamer = streamers[aleatorio(0, streamers.length - 1)];
+
+      // Retorna o filme como uma string
+      return genero + " - " + streamer;
+    }
+
+    // Seleciona o botão e o elemento p pelo id
+    var botao = document.getElementById("gerar");
+    var resultado = document.getElementById("resultado");
+
+    // Adiciona um evento de clique ao botão
+    botao.addEventListener("click", function() {
+      // Gera um filme e mostra no elemento p
+      resultado.textContent = gerarFilme();
+    });
+  </script>
+</body>
+</html>
